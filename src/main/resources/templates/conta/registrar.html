@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciador de Tarefas ThreeK - Login</title>
+    <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style type="text/css">
+        body {
+            background: #f2f2f2;
+
+        }
+
+        * {
+            box-sizing: content-box;
+
+        }
+
+        .center {
+            margin: auto;
+            width: 50%;
+            border: 3px black;
+            padding: 10px;
+            text-align: center;
+            background: #f2f2f2;
+
+        }
+
+
+        .container {
+            border-radius: 30px;
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+
+
+    </style>
+</head>
+<nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
+    <a class="navbar-brand" href="/logout">Gerenciador de Tarefas - ThreeK</a>
+</nav>
+<main class="container align-content-center">
+    <h2 class="align-content-around">Registrar</h2>
+    <form class="form-horizontal " action="/registration" method="post" th:object="${usuario}">
+
+        <div class="row align-content-center">
+            <div class="form-group col-md-6">
+                <div class="alert alert-dark " role="alert" th:if="${#fields.hasErrors('email')}">
+                    <label th:errors="*{email}" class="validation-message"></label>
+                </div>
+                <label>E-mail:</label>
+                <input type="text" required maxlength="50" class="form-control" th:field="*{email}">
+            </div>
+        </div>
+
+        <div class="row align-content-center">
+            <div class="form-group col-md-6">
+                <div class="alert alert-dark" role="alert" th:if="${#fields.hasErrors('senha')}">
+                    <label th:errors="*{senha}" class="validation-message "></label>
+                </div>
+
+                <label>Senha:</label>
+                <input type="text" required maxlength="50" class="form-control" th:field="*{senha}">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-outline-dark">Confirmar</button>
+    </form>
+</main>
+<footer class="footer mt-auto py-3 text-center">
+    <div class="container align-content-center">
+        <span class="text-muted">Gerenciador de Tarefas ThreeK | <a href="https://github.com/Logstay" class="badge badge-dark">GitHub|KaiqueMoreira</a> <a href="https://www.facebook.com/kaiquepng" class="badge badge-dark">Facebook|KaiqueMoreira</a> <a href="https://www.linkedin.com/in/kaique-moreira-aa688914b/" class="badge badge-dark">Linkedin|KaiqueMoreira</a>  * 2019 &copy.</span>
+    </div>
+</footer>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

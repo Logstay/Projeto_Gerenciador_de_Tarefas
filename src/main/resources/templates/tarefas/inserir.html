@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciador de Tarefas - Inserção</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+    <div class="container navPadding">
+        <h3 class="text-secondary">Inserção de nova tarefa</h3>
+
+        <form class="form-horizontal" action="/tarefas/inserir" method="post" th:object="${tarefa}">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="alert alert-dark" role="alert" th:if="${#fields.hasErrors('titulo')}">
+                        <label th:errors="*{titulo}" class="validation-message"></label>
+                    </div>
+                    <label>Titulo:</label>
+                    <input type="text" required maxlength="50" class="form-control" th:field="*{titulo}">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="alert alert-dark" role="alert" th:if="${#fields.hasErrors('descricao')}">
+                        <label th:errors="*{descricao}" class="validation-message"></label>
+                    </div>
+                    <label>Descrição:</label>
+                    <input type="text" required maxlength="50" class="form-control" th:field="*{descricao}">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="alert alert-dark" role="alert" th:if="${#fields.hasErrors('dataExpiracao')}">
+                        <label th:errors="*{dataExpiracao}" class="validation-message"></label>
+                    </div>
+                    <label>Data de expiração:</label>
+                    <input type="date" required maxlength="50" class="form-control" th:field="*{dataExpiracao}">
+                </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-outline-dark">Confirmar</button>
+        </form>
+    </div>
+
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
